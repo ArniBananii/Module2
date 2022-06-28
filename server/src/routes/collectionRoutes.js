@@ -1,5 +1,5 @@
 import express from "express";
-import jwtAuth from "../../middlewares/jwtAuth.js";
+import jwtAuth from "../middlewares/jwtAuth.js";
 import { createCollection, getCollection } from "../controller/collection.js";
 
 const collectionResourcePaths = express.Router();

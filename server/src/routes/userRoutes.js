@@ -1,6 +1,6 @@
 import express from "express";
-import jwtAuth from "../../middlewares/jwtAuth.js";
-import { multerUploads } from "../../middlewares/multer.js";
+import jwtAuth from "../middlewares/jwtAuth.js";
+import { multerUploads } from "../middlewares/multer.js";
 import {
   deleteUserById,
   getProfile,

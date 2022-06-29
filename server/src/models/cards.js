@@ -7,6 +7,7 @@ export const cardSchema = new mongoose.Schema({
   name: String,
   summonerSkills: [
     {
+      _id: false,
       level: Number,
       skill: String,
       skillDetail: String,
@@ -16,15 +17,18 @@ export const cardSchema = new mongoose.Schema({
   abilities: Array,
   baseEffect: [
     {
+      _id: false,
       effect: String,
       effectDetail: String,
     },
   ],
   actions: [
     {
+      _id: false,
       tossOfCoin: [
         {
           cost: String,
+          _id: false,
           success: {
             description: String,
             detail: String,
@@ -37,6 +41,7 @@ export const cardSchema = new mongoose.Schema({
       ],
       directPurchase: [
         {
+          _id: false,
           cost: String,
           action: String,
           actionDetail: String,

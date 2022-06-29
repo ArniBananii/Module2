@@ -106,7 +106,14 @@ const uploadUserPicture = async (req, res) => {
 const updateUser = async (req, res) => {
   const _id = req?.params?.id;
   try {
-    await User.findByIdAndUpdate(_id);
+    if (_id) {
+      await User.findByIdAndUpdate(req.user._id, {
+        userName: req.body.userName,
+      });
+      res
+        .status(200)
+        .json({ message: `changed username to ${req.body.userName}` });
+    }
   } catch (e) {
     res
       .status(500)
@@ -118,12 +125,13 @@ const deleteUserById = async (req, res) => {
   const _id = req?.params?.id;
 
   try {
-    await User.findByIdAndDelete(_id);
-    res.json({ SUCCESS: `You deleted user:${_id} profile` });
+    const user = await User.findByIdAndDelete(_id);
+
+    res.json({ SUCCESS: `You deleted user ${user.userName}:${_id} profile` });
   } catch (e) {
     res
       .status(500)
-      .json({ error: "Server error! unable to deleteUserById", message: e });
+      .json({ message: "Server error! unable to deleteUserById", error: e });
   }
 };
 

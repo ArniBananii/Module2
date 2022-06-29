@@ -1,6 +1,12 @@
 import express from "express";
 import jwtAuth from "../middlewares/jwtAuth.js";
-import { createCollection, getCollection } from "../controller/collection.js";
+import {
+  addCardToCollection,
+  createCollection,
+  deleteCollection,
+  getCollection,
+  removeCardFromCollection,
+} from "../controller/collection.js";
 
 const collectionResourcePaths = express.Router();
 
@@ -11,19 +17,19 @@ collectionResourcePaths.get(
 );
 collectionResourcePaths.post("/collection", jwtAuth, createCollection);
 collectionResourcePaths.put(
-  "collection/:collectionId",
-  jwtAuth
-  // addCardToCollection
+  "/collection/:collectionId/:cardId",
+  jwtAuth,
+  addCardToCollection
 );
 collectionResourcePaths.delete(
-  "collection/:collectionId/:cardId",
-  jwtAuth
-  // deleteCardFromCollection
+  "/collection/:collectionId/:cardId",
+  jwtAuth,
+  removeCardFromCollection
 );
 collectionResourcePaths.delete(
-  "collection/:collectionId/",
-  jwtAuth
-  // deleteCollection
+  "/collection/:collectionId/",
+  jwtAuth,
+  deleteCollection
 );
 
 export { collectionResourcePaths };

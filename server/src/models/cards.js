@@ -58,6 +58,7 @@ export const cardSchema = new mongoose.Schema({
   edition: String,
   illustrator: String,
   releaseYear: Number,
+  imageUrl: String,
 });
 const Card = mongoose.model("card", cardSchema);
 export default Card;

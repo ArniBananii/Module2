@@ -1,0 +1,30 @@
+.CardGrid {
+    display: grid;
+    grid-template-columns: 1fr ;
+   padding-left: 10px;
+   padding-right: 10px;
+    row-gap: 12px;
+    width: min-content;
+
+}
+@media screen and (min-width:720px){.CardGrid{
+    display: grid;
+    grid-template-columns:1fr 1fr;
+    padding-left: 10px;
+        padding-right: 10px;
+    column-gap: 32px;
+    row-gap: 12px;
+    width: min-content;
+    
+}
+}@media screen and (min-width:1500px){.CardGrid{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr;
+    column-gap: 32px;
+    row-gap: 12px;
+    width: min-content;
+    
+   
+    
+}
+}

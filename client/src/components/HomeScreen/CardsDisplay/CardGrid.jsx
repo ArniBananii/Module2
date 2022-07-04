@@ -2,30 +2,20 @@ import React from "react";
 import useFetch from "../../../util/useFetch";
 import { BASE_URL } from "../../../Constants/Local.js";
 import Card from "./Card";
+import "../../../style/CardGrid_style.css";
 
 export default function CardGrid() {
   const { response, isLoading, error } = useFetch(`${BASE_URL}/cards`);
 
-  console.log("response", response);
-  console.log("isLoading", isLoading);
   return (
-    <div>
-      TEST
-      {
-        <div>
-          {!isLoading ? (
-            response.cards.map((card, index) => {
-              return (
-                <div key={index}>
-                  <Card value={card} />;
-                </div>
-              );
-            })
-          ) : (
-            <p>..Loading..</p>
-          )}
-        </div>
-      }
+    <div className="CardGrid">
+      {!isLoading ? (
+        response.cards.map((card, index) => {
+          return <Card card={card} index={index} />;
+        })
+      ) : (
+        <p>..Loading..</p>
+      )}
     </div>
   );
 }

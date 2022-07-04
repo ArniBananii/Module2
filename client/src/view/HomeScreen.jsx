@@ -4,7 +4,7 @@ import SignUp from "../components/ProfileScreen/SignUp";
 
 function HomeScreen() {
   return (
-    <div>
+    <div style={{ display: "flex", "justify-content": "center" }}>
       <CardGrid />
     </div>
   );

@@ -15,7 +15,7 @@ function ProfileScreen() {
     "http://localhost:3001/api/v1/profile",
     requestOptions
   );
-  console.log("response", response);
+  console.log("response profile", response);
   console.log("isLoading", isLoading);
   console.log("error", error);
 

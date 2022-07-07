@@ -5,17 +5,21 @@ import Card from "./Card";
 import "../../../style/CardGrid_style.css";
 import filterByOption from "../../../util/filterByOption";
 
+const test = "?rarity=COMMON";
+const test2 = "?types=CREATURE";
+const test3 = "";
+
 export default function CardGrid() {
-  const { response, isLoading, error } = useFetch(`${BASE_URL}/cards`);
+  const { response, isLoading, error } = useFetch(`${BASE_URL}/cards${test3}`);
 
   console.log("response", response);
 
-  useEffect(() => {
-    console.log("isLoading", isLoading);
-    if (!isLoading) {
-      console.log("test", filterByOption(response.cards, "Ether"));
-    }
-  }, [isLoading]);
+  // useEffect(() => {
+  //   console.log("isLoading", isLoading);
+  //   if (!isLoading) {
+  //     console.log("test", filterByOption(response.cards, "Ether"));
+  //   }
+  // }, [isLoading]);
 
   return (
     <div className="CardGrid">

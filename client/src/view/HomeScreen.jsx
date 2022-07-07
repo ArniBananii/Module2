@@ -1,5 +1,6 @@
 import React from "react";
 import CardGrid from "../components/HomeScreen/CardsDisplay/CardGrid";
+import FilterScreen from "../components/HomeScreen/FilterDisplay/FilterScreen";
 import "../style/Home.css";
 
 function HomeScreen() {
@@ -16,6 +17,9 @@ function HomeScreen() {
       <div className="Home-style">
         <div className="Home-grid">
           <CardGrid />
+        </div>
+        <div className="Home-filter">
+          <FilterScreen />
         </div>
       </div>
     </div>

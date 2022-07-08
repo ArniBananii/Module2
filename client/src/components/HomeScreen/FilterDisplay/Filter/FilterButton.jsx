@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { SearchParamContext } from "../../../../context/SearchParamContext.jsx";
 
 export default function FilterButton(props) {
-  const { searchParams, setSearchParams, buttonData, index } = props;
+  const { buttonData, index } = props;
   const [secondPress, setSecondPress] = useState(false);
+  const { searchParams, setSearchParams } = useContext(SearchParamContext);
   const [color, setColor] = useState("#1b1a1a");
   return (
     <button
@@ -17,7 +19,6 @@ export default function FilterButton(props) {
           searchParams.filter((item) => buttonData.value !== item);
           setSecondPress(true);
           setColor(buttonData.color);
-          console.log("searchParams", searchParams);
         }
         if (secondPress) {
           setSearchParams(

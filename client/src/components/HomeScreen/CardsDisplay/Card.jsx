@@ -23,19 +23,13 @@ export default function Card(props) {
           {card.types.map((type, index) => {
             if (index < 1) {
               return (
-                <span
-                  key={index}
-                  style={{ color: cardTypeColors[type.toUpperCase()] }}
-                >
+                <span key={index} style={{ color: cardTypeColors[type] }}>
                   {type}
                 </span>
               );
             } else {
               return (
-                <span
-                  key={index}
-                  style={{ color: cardTypeColors[type.toUpperCase()] }}
-                >
+                <span key={index} style={{ color: cardTypeColors[type] }}>
                   {" "}
                   / {type}
                 </span>

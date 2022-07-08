@@ -1,6 +1,6 @@
 import React from "react";
 import CardGrid from "../components/HomeScreen/CardsDisplay/CardGrid";
-import FilterScreen from "../components/HomeScreen/FilterDisplay/FilterScreen";
+import FilterScreen from "../components/HomeScreen/FilterDisplay/FilterMenu.jsx";
 import "../style/Home.css";
 
 function HomeScreen() {
@@ -18,7 +18,7 @@ function HomeScreen() {
         <div className="Home-grid">
           <CardGrid />
         </div>
-        <div className="Home-filter">
+        <div className="Home-filter-menu">
           <FilterScreen />
         </div>
       </div>

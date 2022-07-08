@@ -1,25 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import useFetch from "../../../util/useFetch";
 import { BASE_URL } from "../../../Constants/Local.js";
 import Card from "./Card";
 import "../../../style/CardGrid_style.css";
 import filterByOption from "../../../util/filterByOption";
-
-const test = "?rarity=COMMON";
-const test2 = "?types=CREATURE";
-const test3 = "";
+import { SearchParamContext } from "../../../context/SearchParamContext";
 
 export default function CardGrid() {
-  const { response, isLoading, error } = useFetch(`${BASE_URL}/cards${test3}`);
+  const { searchParams } = useContext(SearchParamContext);
+
+  const test3 = searchParams.join("&");
+  console.log("test3", test3);
+  const { response, isLoading, error } = useFetch(`${BASE_URL}/cards?${test3}`);
 
   console.log("response", response);
 
-  // useEffect(() => {
-  //   console.log("isLoading", isLoading);
-  //   if (!isLoading) {
-  //     console.log("test", filterByOption(response.cards, "Ether"));
-  //   }
-  // }, [isLoading]);
+  useEffect(() => {}, []);
 
   return (
     <div className="CardGrid">

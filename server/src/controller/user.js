@@ -7,7 +7,7 @@ const getUserById = async (req, res) => {
   const id = req?.params?.id;
   try {
     const user = await User.findById(id);
-    console.log("user", user);
+
     res.status(200).json({ user: user });
   } catch (e) {
     res
@@ -15,7 +15,7 @@ const getUserById = async (req, res) => {
       .json({ error: "Server error! unable to getUserById", message: e });
   }
 };
-//? req.body.email or userName later as value
+
 const signUp = async (req, res) => {
   try {
     console.log(req.body);
@@ -24,18 +24,18 @@ const signUp = async (req, res) => {
       res.status(409).json({ message: "user already exists" });
     } else {
       const hashedPassword = await encryptPassword(req.body.password);
-      console.log("hashedPassword", hashedPassword);
 
       const newUser = new User({
         userName: req.body.userName,
         email: req.body.email,
         password: hashedPassword,
-        avatarPicture: req.body.avatarPicture, //? pic must be default send with front-end
+        avatarPicture: req.body.avatarPicture, //! pic must be default send with front-end
       });
       try {
         await newUser.save();
-        res.status(201).json({
+        res.status(200).json({
           message: "user registered",
+          user: newUser,
         });
       } catch (error) {
         res
@@ -67,8 +67,6 @@ const logIn = async (req, res) => {
         messag: "wrong password",
       });
     } else {
-      // console.log("verified", verified);
-      // console.log("logged in successful");
       const token = await issueToken(existingUser.id);
 
       res.status(200).json({
@@ -88,9 +86,16 @@ const uploadUserPicture = async (req, res) => {
   try {
     console.log("req.file", req.file); //Multer is storing the file in that property(object) of the request object
     const uploadResult = await cloudinary.uploader.upload(req.file.path, {
-      folder: "UserProfile-Image",
+      folder: "test",
       //TODO: templating! send id for specific user via req.user._id and append it!
     });
+    await User.findOneAndUpdate(
+      { userName: req.body.userName },
+      {
+        avatarPicture: uploadResult.url,
+      }
+    );
+
     console.log("result", uploadResult); //this show us the object with all the information about the upload, including the public URL in result.url
     res.status(200).json({
       message: "image succesfully uploaded",

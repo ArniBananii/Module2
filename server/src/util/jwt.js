@@ -9,7 +9,7 @@ const issueToken = async (userId) => {
   };
 
   const signOptions = {
-    expiresIn: "2 d",
+    expiresIn: "1 d",
   };
 
   const token = jsonwebtoken.sign(

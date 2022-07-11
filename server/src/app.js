@@ -28,6 +28,7 @@ app.use(RESOURCE_PATH, usersResourcePaths);
 app.use(RESOURCE_PATH, collectionResourcePaths);
 app.use(STATUS_RESOURCE_PATH, statusResourcePaths);
 app.use(passport.initialize());
+
 passportConfig(passport);
 //!
 connectToDatabase();

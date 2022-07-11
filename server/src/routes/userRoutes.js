@@ -14,12 +14,12 @@ import {
 const usersResourcePaths = express.Router();
 
 usersResourcePaths.get("/user/:id", getUserById);
-usersResourcePaths.get("/profile", jwtAuth, getProfile); //! will eb deleted again and jwt auth put in different routes
+usersResourcePaths.get("/profile", jwtAuth, getProfile);
 usersResourcePaths.post("/login", logIn);
 usersResourcePaths.post("/signup", signUp);
 usersResourcePaths.put("/user/:id", jwtAuth, updateUser);
-usersResourcePaths.put(
-  "/user/profileImage",
+usersResourcePaths.post(
+  "/profileImage",
   jwtAuth,
   multerUploads.single("image"),
   uploadUserPicture

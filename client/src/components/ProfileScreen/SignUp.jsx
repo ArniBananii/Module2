@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../../Constants/Local";
+import { BASE_URL, DEFAULT_PICTURE, REGEX } from "../../Constants/Local";
 
 function SignUp(props) {
   const [newUser, setNewUser] = useState({});
@@ -10,6 +10,13 @@ function SignUp(props) {
     setNewUser({ ...newUser, [e.target.name]: e.target.value });
   };
 
+  const emailValidator = () => {
+    if (REGEX.test(newUser.email)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
   const signUp = async () => {
     //verify all necessary fields are filled
     // verify email / password length and strength with Reßgex
@@ -18,15 +25,20 @@ function SignUp(props) {
     urlencoded.append("userName", newUser.userName);
     urlencoded.append("email", newUser.email);
     urlencoded.append("password", newUser.password);
+    urlencoded.append("avatarPicture", DEFAULT_PICTURE);
 
     let requestOptions = {
       method: "POST",
       body: urlencoded,
     };
     try {
-      const response = await fetch(`${BASE_URL}/signup`, requestOptions);
-      if (response.status === 200) {
-        navigate("/login", { replace: true });
+      if (emailValidator) {
+        const response = await fetch(`${BASE_URL}/signup`, requestOptions);
+        if (response.status === 200) {
+          navigate("/login", { replace: true });
+        }
+      } else {
+        console.log("error", "email not valid");
       }
     } catch (error) {
       console.log("error", error);
@@ -72,14 +84,6 @@ function SignUp(props) {
               required
             />
           </div>
-          //! Pic upload comes later
-          {/* <form>
-          <input type="file" onChange={attachFileHandler} />
-          <button onClick={submitForm}>Upload picture</button>
-        </form>
-        {newUser.avatarPicture && (
-          <img src={newUser.avatarPicture} alt="userPic" />
-        )} */}
         </div>
         <button type="submit" onClick={signUp}>
           Signup

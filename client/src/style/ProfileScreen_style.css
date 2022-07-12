@@ -1,0 +1,29 @@
+.container{
+ display: flex;  
+ width: 100vw;
+ height: 100vh; 
+ justify-content: center;
+}
+
+.Profile-display{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-between;
+    background-color: aliceblue;
+    width: 35vw;
+    height: 50vh;
+    border-radius: 8px;
+}
+.Profile-image{
+   align-self: center;
+   
+}
+
+
+.Profile-name{
+    align-self: center;
+}
+.Profile-email{
+    align-self: center;
+}

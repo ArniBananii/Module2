@@ -13,7 +13,6 @@ export const LogOutContextProvider = (props) => {
 
   return (
     <LogOutContext.Provider value={{ logOut }}>
-      {" "}
       {props.children}
     </LogOutContext.Provider>
   );

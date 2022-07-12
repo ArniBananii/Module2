@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../Constants/Local";
+import "../../style/Login.css";
 
 export default function Login() {
   const [loginUser, setLoginUser] = useState({});
@@ -63,8 +64,8 @@ export default function Login() {
             onChange={handleChangeHandler}
           />
         </div>
+        <button onClick={logIn}>Login</button>
       </div>
-      <button onClick={logIn}>Login</button>
     </div>
   );
 }

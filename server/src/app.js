@@ -15,6 +15,7 @@ import { collectionResourcePaths } from "./routes/collectionRoutes.js";
 import { connectToDatabase } from "./services/database.js";
 import passport from "passport";
 import { passportConfig } from "./config/passportConfig.js";
+import { cloudinaryConfig } from "./config/cloudinaryConfig.js";
 
 const app = express();
 
@@ -30,6 +31,7 @@ app.use(STATUS_RESOURCE_PATH, statusResourcePaths);
 app.use(passport.initialize());
 
 passportConfig(passport);
+cloudinaryConfig();
 //!
 connectToDatabase();
 app.listen(PORT, () => {
